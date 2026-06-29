@@ -150,7 +150,7 @@
         <div>
           <span class="eyebrow"><span style="color:var(--lgc-coral)">&#9829;</span> Edmonton &amp; Strathcona County</span>
           <h1>Come home to <span style="color:var(--lgc-green)">spotless</span></h1>
-          <p class="lead">Reliable, eco-friendly cleaning on a schedule that fits your life — weekly, bi-weekly, or monthly. Locally owned, pet-friendly, and trusted for 20 years.</p>
+          <p class="lead">Reliable, eco-friendly cleaning on a schedule that fits your life. Locally owned, pet-friendly, and trusted for 20 years.</p>
           <div class="hero-actions">
             <a class="btn btn-cta" href="tel:+17807175647" style="padding:16px 28px;font-size:16px">Call or Text (780) 717-5647</a>
             <a class="ghost" href="#services">See how it works →</a>
@@ -260,7 +260,6 @@
   (function(){
     var AMOUNT=22, OPACITY=0.3, INTENSITY=1.6;
     var BUBBLE_COLORS=['#8fd6b4','#a9e2c9','#73c9a0'];
-    var HEART_COLORS=['#f4a48f','#9fdcc0','#f4683f','#bfe7d3'];
 
     function rng(seed){
       var t=(seed+0x6D2B79F5)>>>0;
@@ -281,8 +280,7 @@
     if(!field)return;
 
     for(var i=0;i<AMOUNT;i++){
-      var r3=rng(i*9+3),r4=rng(i*9+4),r5=rng(i*9+5),r6=rng(i*9+6),r7=rng(i*9+7);
-      var isHeart=r6>0.6;
+      var r3=rng(i*9+3),r4=rng(i*9+4),r5=rng(i*9+5),r7=rng(i*9+7);
 
       var lx,ty;
       for(var a=0;a<14;a++){
@@ -300,20 +298,12 @@
       var el=document.createElement('span');
       el.style.cssText='position:absolute;left:'+lx.toFixed(2)+'%;top:'+ty.toFixed(2)+'%;opacity:'+OPACITY+';pointer-events:none;--drift:'+drift.toFixed(1)+'px;animation:'+anim+';';
 
-      if(isHeart){
-        var fs=11+Math.round(r3*15);
-        el.style.fontSize=fs+'px';
-        el.style.lineHeight='1';
-        el.style.color=HEART_COLORS[Math.floor(r3*100)%4];
-        el.textContent='♥';
-      } else {
-        var sz=6+Math.round(r3*16);
-        var bw=r4>0.5?'2px':'2.5px';
-        el.style.width=sz+'px';
-        el.style.height=sz+'px';
-        el.style.borderRadius='50%';
-        el.style.border=bw+' solid '+BUBBLE_COLORS[Math.floor(r3*100)%3];
-      }
+      var sz=6+Math.round(r3*16);
+      var bw=r4>0.5?'2px':'2.5px';
+      el.style.width=sz+'px';
+      el.style.height=sz+'px';
+      el.style.borderRadius='50%';
+      el.style.border=bw+' solid '+BUBBLE_COLORS[Math.floor(r3*100)%3];
 
       field.appendChild(el);
     }
@@ -328,24 +318,16 @@
       for(var j=0;j<z.count;j++){
         var s=z.sb+j;
         var zr3=rng(s*9+3),zr4=rng(s*9+4),zr5=rng(s*9+5),zr7=rng(s*9+7);
-        var zh=rng(s*9+6)>0.6;
         var zlx=z.lxMin+rng(s*97+1)*(z.lxMax-z.lxMin);
         var zty=z.tyMin+rng(s*97+2)*(z.tyMax-z.tyMin);
         var zd=(5+zr4*13)*INTENSITY;
         var zdur=(5+zr5*4.5)/(0.55+INTENSITY*0.6);
         var zel=document.createElement('span');
         zel.style.cssText='position:absolute;left:'+zlx.toFixed(2)+'%;top:'+zty.toFixed(2)+'%;opacity:'+OPACITY+';pointer-events:none;--drift:'+zd.toFixed(1)+'px;animation:lgdBub '+zdur.toFixed(2)+'s ease-in-out '+(zr7*4).toFixed(2)+'s infinite;';
-        if(zh){
-          zel.style.fontSize=(11+Math.round(zr3*15))+'px';
-          zel.style.lineHeight='1';
-          zel.style.color=HEART_COLORS[Math.floor(zr3*100)%4];
-          zel.textContent='♥';
-        } else {
-          var zsz=6+Math.round(zr3*16);
-          zel.style.width=zsz+'px'; zel.style.height=zsz+'px';
-          zel.style.borderRadius='50%';
-          zel.style.border=(zr4>0.5?'2px':'2.5px')+' solid '+BUBBLE_COLORS[Math.floor(zr3*100)%3];
-        }
+        var zsz=6+Math.round(zr3*16);
+        zel.style.width=zsz+'px'; zel.style.height=zsz+'px';
+        zel.style.borderRadius='50%';
+        zel.style.border=(zr4>0.5?'2px':'2.5px')+' solid '+BUBBLE_COLORS[Math.floor(zr3*100)%3];
         field.appendChild(zel);
       }
     });
