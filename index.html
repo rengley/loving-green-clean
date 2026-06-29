@@ -10,11 +10,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Loving Green Clean">
 <meta property="og:title" content="House Cleaning in Sherwood Park &amp; Edmonton | Loving Green Clean">
-<meta property="og:description" content="Reliable, eco-friendly recurring house cleaning — weekly, bi-weekly or monthly. Pet-friendly, locally owned, trusted for 20 years.">
+<meta property="og:description" content="Reliable, eco &amp; pet-friendly house cleaning. Locally owned &amp; trusted for 20 years.">
 <meta property="og:url" content="https://lovinggreenclean.ca/">
-<meta property="og:image" content="https://lovinggreenclean.ca/assets/og-image.jpg">
+<meta property="og:image" content="https://lovinggreenclean.ca/assets/hero-kitchen.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Loving Green Clean","description":"Eco-friendly recurring residential house cleaning — weekly, bi-weekly, and monthly — serving Sherwood Park, Edmonton, and Strathcona County.","url":"https://lovinggreenclean.ca/","telephone":"+1-780-717-5647","email":"hello@lovinggreenclean.ca","image":"https://lovinggreenclean.ca/assets/lgc-logo.png","logo":"https://lovinggreenclean.ca/assets/lgc-logo.png","priceRange":"$$","foundingDate":"2006","areaServed":[{"@type":"City","name":"Sherwood Park"},{"@type":"City","name":"Edmonton"},{"@type":"AdministrativeArea","name":"Strathcona County"}],"address":{"@type":"PostalAddress","addressLocality":"Sherwood Park","addressRegion":"AB","addressCountry":"CA"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Weekly home cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Bi-weekly home cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Monthly home cleaning"}}]}</script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 <style>
   body{margin:0;background:var(--lgc-page);font-family:var(--font-body);color:var(--lgc-text);line-height:1.5;-webkit-font-smoothing:antialiased}
@@ -42,6 +43,9 @@
   .hrt{position:absolute;line-height:1;animation:fl var(--d,6s) ease-in-out infinite;z-index:1}
   @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(calc(-1*var(--dr,9px)))}}
   @media (prefers-reduced-motion: reduce){.bub,.hrt{animation:none}}
+  .bubble-field{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+  @keyframes lgdBub{0%,100%{transform:translateY(0)}50%{transform:translateY(calc(-1*var(--drift,8px)))}}
+  @media(prefers-reduced-motion:reduce){.bubble-field>*{animation:none!important}}
   .trust{display:flex;justify-content:center;flex-wrap:wrap;gap:14px 30px;padding:30px 36px 6px;font-family:var(--font-display);font-size:14px;font-weight:500;color:var(--lgc-nav)}
   .trust span{display:inline-flex;align-items:center;gap:8px}
   .sec-head{padding:44px 36px 12px;text-align:center}
@@ -141,12 +145,7 @@
 
     <!-- hero -->
     <div class="hero">
-      <span class="bub" style="width:16px;height:16px;border-width:2.5px;border-color:var(--lgc-bubble-1);left:30%;top:30px;--d:5.4s;--dr:11px;opacity:.4"></span>
-      <span class="bub" style="width:10px;height:10px;border-width:2px;border-color:var(--lgc-bubble-3);left:46%;top:120px;--d:7s;--dr:8px;opacity:.35;animation-delay:.5s"></span>
-      <span class="bub" style="width:22px;height:22px;border-width:2px;border-color:var(--lgc-bubble-2);left:40%;bottom:40px;--d:6.2s;--dr:13px;opacity:.4;animation-delay:.3s"></span>
-      <span class="bub" style="width:8px;height:8px;border-width:2px;border-color:var(--lgc-bubble-3);left:18%;bottom:60px;--d:5.8s;--dr:7px;opacity:.4;animation-delay:.8s"></span>
-      <span class="hrt" style="color:var(--lgc-heart-1);font-size:18px;left:48%;top:60px;--d:6.6s;--dr:10px;opacity:.4;animation-delay:.2s">&#9829;</span>
-      <span class="hrt" style="color:var(--lgc-heart-3);font-size:13px;left:33%;bottom:70px;--d:5.6s;--dr:9px;opacity:.35;animation-delay:.9s">&#9829;</span>
+      <div class="bubble-field" aria-hidden="true"></div>
       <div class="hero-grid">
         <div>
           <span class="eyebrow"><span style="color:var(--lgc-coral)">&#9829;</span> Edmonton &amp; Strathcona County</span>
@@ -254,6 +253,101 @@
         btn.classList.remove('open');
         btn.setAttribute('aria-expanded','false');
       });
+    });
+  })();
+  </script>
+  <script>
+  (function(){
+    var AMOUNT=22, OPACITY=0.3, INTENSITY=1.6;
+    var BUBBLE_COLORS=['#8fd6b4','#a9e2c9','#73c9a0'];
+    var HEART_COLORS=['#f4a48f','#9fdcc0','#f4683f','#bfe7d3'];
+
+    function rng(seed){
+      var t=(seed+0x6D2B79F5)>>>0;
+      t=Math.imul(t^(t>>>15),t|1);
+      t^=t+Math.imul(t^(t>>>7),t|61);
+      return((t^(t>>>14))>>>0)/4294967296;
+    }
+
+    var EX=[
+      {x0:0,x1:52,y0:16,y1:68},
+      {x0:0,x1:37,y0:68,y1:86}
+    ];
+    function inText(x,y){
+      return EX.some(function(b){return x>=b.x0&&x<=b.x1&&y>=b.y0&&y<=b.y1;});
+    }
+
+    var field=document.querySelector('.bubble-field');
+    if(!field)return;
+
+    for(var i=0;i<AMOUNT;i++){
+      var r3=rng(i*9+3),r4=rng(i*9+4),r5=rng(i*9+5),r6=rng(i*9+6),r7=rng(i*9+7);
+      var isHeart=r6>0.6;
+
+      var lx,ty;
+      for(var a=0;a<14;a++){
+        lx=3+rng(i*97+a*2+1)*94;
+        ty=5+rng(i*97+a*2+2)*86;
+        if(!inText(lx,ty))break;
+      }
+      if(inText(lx,ty))lx=62+rng(i*31+5)*34;
+
+      var drift=(5+r4*13)*INTENSITY;
+      var dur=(5+r5*4.5)/(0.55+INTENSITY*0.6);
+      var delay=r7*4;
+      var anim='lgdBub '+dur.toFixed(2)+'s ease-in-out '+delay.toFixed(2)+'s infinite';
+
+      var el=document.createElement('span');
+      el.style.cssText='position:absolute;left:'+lx.toFixed(2)+'%;top:'+ty.toFixed(2)+'%;opacity:'+OPACITY+';pointer-events:none;--drift:'+drift.toFixed(1)+'px;animation:'+anim+';';
+
+      if(isHeart){
+        var fs=11+Math.round(r3*15);
+        el.style.fontSize=fs+'px';
+        el.style.lineHeight='1';
+        el.style.color=HEART_COLORS[Math.floor(r3*100)%4];
+        el.textContent='♥';
+      } else {
+        var sz=6+Math.round(r3*16);
+        var bw=r4>0.5?'2px':'2.5px';
+        el.style.width=sz+'px';
+        el.style.height=sz+'px';
+        el.style.borderRadius='50%';
+        el.style.border=bw+' solid '+BUBBLE_COLORS[Math.floor(r3*100)%3];
+      }
+
+      field.appendChild(el);
+    }
+
+    // Explicitly populate three hero zones the seeded scatter tends to skip
+    var ZONES=[
+      {lxMin:4,  lxMax:26, tyMin:4,  tyMax:13, count:3, sb:500}, // top-left
+      {lxMin:33, lxMax:62, tyMin:4,  tyMax:13, count:4, sb:600}, // top-middle
+      {lxMin:52, lxMax:59, tyMin:26, tyMax:68, count:3, sb:700}  // left of hero image
+    ];
+    ZONES.forEach(function(z){
+      for(var j=0;j<z.count;j++){
+        var s=z.sb+j;
+        var zr3=rng(s*9+3),zr4=rng(s*9+4),zr5=rng(s*9+5),zr7=rng(s*9+7);
+        var zh=rng(s*9+6)>0.6;
+        var zlx=z.lxMin+rng(s*97+1)*(z.lxMax-z.lxMin);
+        var zty=z.tyMin+rng(s*97+2)*(z.tyMax-z.tyMin);
+        var zd=(5+zr4*13)*INTENSITY;
+        var zdur=(5+zr5*4.5)/(0.55+INTENSITY*0.6);
+        var zel=document.createElement('span');
+        zel.style.cssText='position:absolute;left:'+zlx.toFixed(2)+'%;top:'+zty.toFixed(2)+'%;opacity:'+OPACITY+';pointer-events:none;--drift:'+zd.toFixed(1)+'px;animation:lgdBub '+zdur.toFixed(2)+'s ease-in-out '+(zr7*4).toFixed(2)+'s infinite;';
+        if(zh){
+          zel.style.fontSize=(11+Math.round(zr3*15))+'px';
+          zel.style.lineHeight='1';
+          zel.style.color=HEART_COLORS[Math.floor(zr3*100)%4];
+          zel.textContent='♥';
+        } else {
+          var zsz=6+Math.round(zr3*16);
+          zel.style.width=zsz+'px'; zel.style.height=zsz+'px';
+          zel.style.borderRadius='50%';
+          zel.style.border=(zr4>0.5?'2px':'2.5px')+' solid '+BUBBLE_COLORS[Math.floor(zr3*100)%3];
+        }
+        field.appendChild(zel);
+      }
     });
   })();
   </script>
