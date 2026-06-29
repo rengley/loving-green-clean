@@ -1,0 +1,33 @@
+:root {
+  /* ---- Families ---- */
+  --font-display: 'Fredoka', system-ui, sans-serif;  /* headings, labels, buttons */
+  --font-body: 'Nunito', system-ui, sans-serif;       /* paragraphs, UI text */
+  --font-mono: ui-monospace, Menlo, monospace;        /* placeholder/spec labels */
+
+  /* ---- Weights ---- */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;   /* default for Fredoka display + labels */
+  --fw-bold: 700;
+  --fw-black: 800;
+
+  /* ---- Sizes (exact values from the site) ---- */
+  --fs-h1: 50px;
+  --fs-h2: 34px;
+  --fs-h3: 21px;
+  --fs-lead: 16.5px;
+  --fs-body: 15px;
+  --fs-small: 14px;
+  --fs-eyebrow: 13px;
+  --fs-micro: 12.5px;
+
+  /* ---- Line heights ---- */
+  --lh-tight: 1.02;   /* hero h1 */
+  --lh-snug: 1.2;
+  --lh-body: 1.5;
+
+  /* ---- Letter spacing ---- */
+  --ls-hero: -0.5px;
+  --ls-heading: -0.3px;
+  --ls-label: 0.4px;  /* uppercase eyebrows */
+}

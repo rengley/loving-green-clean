@@ -1,0 +1,20 @@
+:root {
+  /* Spacing scale (px) */
+  --space-1: 6px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 26px;
+  --space-7: 30px;
+  --space-8: 36px;
+  --space-9: 46px;
+  --space-10: 54px;
+
+  /* Layout */
+  --section-pad-x: 36px;   /* horizontal padding inside sections */
+  --panel-gutter: 22px;    /* inset of the mint hero / green CTA panels */
+  --card-pad: 30px;        /* service card padding */
+  --grid-gap: 20px;        /* gap between service cards */
+  --max-width: 1040px;     /* site content width */
+}

@@ -1,0 +1,50 @@
+:root {
+  /* ---- Brand greens ---- */
+  --lgc-green: #18ad6e;          /* primary brand / feature surfaces */
+  --lgc-green-deep: #0d7a4c;     /* pressed green, eyebrow text on light */
+  --lgc-green-ink: #143728;      /* darkest — footer */
+  --lgc-green-heading: #1e3a2c;  /* headings */
+
+  /* ---- Mint surfaces ---- */
+  --lgc-mint: #eef9f3;           /* hero panel */
+  --lgc-mint-200: #eaf6ef;       /* tints / placeholders */
+  --lgc-mint-300: #dff0e7;
+
+  /* ---- Coral accent (calls-to-action) ---- */
+  --lgc-coral: #f4683f;
+  --lgc-coral-soft: #f4a48f;
+
+  /* ---- Cream / cards ---- */
+  --lgc-cream: #fbf7ef;          /* service card background */
+  --lgc-cream-border: #f1ece0;
+
+  /* ---- Neutrals ---- */
+  --lgc-white: #ffffff;
+  --lgc-page: #e8efe9;           /* page backdrop behind the site card */
+  --lgc-text: #243b32;           /* body */
+  --lgc-text-muted: #5f7268;     /* secondary text */
+  --lgc-nav: #33503f;            /* nav links */
+
+  /* ---- Decorative bubble / heart palette ---- */
+  --lgc-bubble-1: #8fd6b4;
+  --lgc-bubble-2: #a9e2c9;
+  --lgc-bubble-3: #73c9a0;
+  --lgc-heart-1: #f4a48f;
+  --lgc-heart-2: #9fdcc0;
+  --lgc-heart-3: #f4683f;
+  --lgc-heart-4: #bfe7d3;
+
+  /* ---- Semantic aliases ---- */
+  --brand: var(--lgc-green);
+  --action: var(--lgc-coral);
+  --surface-page: var(--lgc-page);
+  --surface-card: var(--lgc-white);
+  --surface-panel: var(--lgc-mint);
+  --surface-soft: var(--lgc-cream);
+  --surface-feature: var(--lgc-green);
+  --surface-ink: var(--lgc-green-ink);
+  --text-heading: var(--lgc-green-heading);
+  --text-body: var(--lgc-text);
+  --text-muted: var(--lgc-text-muted);
+  --border-soft: var(--lgc-cream-border);
+}

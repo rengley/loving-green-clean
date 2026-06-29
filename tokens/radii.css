@@ -1,0 +1,8 @@
+:root {
+  --radius-sm: 8px;       /* placeholder chips, small labels */
+  --radius-card: 24px;    /* service cards */
+  --radius-image: 26px;   /* framed photos */
+  --radius-panel: 30px;   /* hero + CTA panels */
+  --radius-pill: 30px;    /* buttons, eyebrows, badges */
+  --radius-page: 20px;    /* outer site card */
+}

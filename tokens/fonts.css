@@ -1,0 +1,5 @@
+/* Webfonts — Fredoka (display) + Nunito (body), Google-hosted.
+   NOTE: these are loaded from Google Fonts, not self-hosted binaries.
+   If you need offline/self-hosted fonts, drop the .woff2 files in assets/
+   and replace this @import with @font-face rules. */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
